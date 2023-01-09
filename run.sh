@@ -2,6 +2,7 @@ if [ "$(id -u)" -ne 0 ]; then
   echo "You have to run as root (sudo)."
   exit 1
 fi
+pacman -Sy
 cat repos >> /etc/pacman.conf
 cat universe >> /etc/pacman.conf
 pacman -Sy
