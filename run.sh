@@ -2,6 +2,7 @@ su
 cat universe >> /etc/pacman.conf
 pacman -Sy
 pacman-key --refresh
+pacman-key --init
 pacman -Sy artix-linux-support
 cat repos >> /etc/pacman.conf
 pacman-key --populate archlinux
