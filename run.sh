@@ -1,5 +1,5 @@
-if [ ! whoami = root ]
-  then echo "You have to run as root (sudo)."
+if [ ! whoami = root ]; then
+  echo "You have to run as root (sudo)."
   exit 1
 fi
 cat repos >> /etc/pacman.conf
