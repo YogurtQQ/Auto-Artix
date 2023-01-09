@@ -3,12 +3,12 @@ if [ "$(id -u)" -ne 0 ]; then
   exit 1
 fi
 pacman -Sy
-cat repos >> /etc/pacman.conf
 cat universe >> /etc/pacman.conf
 pacman -Sy
 pacman-key --init
 pacman-key --refresh
 pacman -Sy artix-archlinux-support
+cat repos >> /etc/pacman.conf
 pacman-key --populate archlinux
 pacman -Syu
 # personal selection:
