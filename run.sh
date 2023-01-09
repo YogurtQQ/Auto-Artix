@@ -7,7 +7,7 @@ cat universe >> /etc/pacman.conf
 pacman -Sy
 pacman-key --init
 pacman-key --refresh
-pacman -Sy artix-archlinux-support
+yes | pacman -Sy artix-archlinux-support
 cat repos >> /etc/pacman.conf
 pacman-key --populate archlinux
 pacman -Syu
