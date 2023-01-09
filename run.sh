@@ -1,4 +1,4 @@
-if (whoami != root)
+if [ ! whoami = root ]
   then echo "You have to run as root (sudo)."
   exit 1
 fi
