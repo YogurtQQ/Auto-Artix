@@ -5,8 +5,8 @@ fi
 cat repos >> /etc/pacman.conf
 cat universe >> /etc/pacman.conf
 pacman -Sy
-pacman-key --refresh
 pacman-key --init
+pacman-key --refresh
 pacman -Sy artix-archlinux-support
 pacman-key --populate archlinux
 pacman -Syu
