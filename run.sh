@@ -1,4 +1,3 @@
-su
 cat universe >> /etc/pacman.conf
 pacman -Sy
 pacman-key --refresh
