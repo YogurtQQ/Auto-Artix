@@ -1,3 +1,5 @@
+sudo pacman -S --noconfirm --needed dialog
+
 # (my cinnamon key shortcuts)
 if dialog --stdout --title "What to do?" \
           --backtitle "Backup-Verwaltung" \
@@ -28,7 +30,6 @@ if dialog --stdout --title "Do you want an extra software list or not?" \
           --backtitle "Backup-Verwaltung" \
           --yesno "Yes, No" 7 60; then
     echo "Going with the full install..."
-    sudo pacman -S --noconfirm --needed dialog
     words=$(cat package.list)
     tempfile=$(mktemp)
     dialog --checklist "Choose one or more words:" 20 60 10 \
