@@ -36,6 +36,7 @@ read answer
 case $answer in
   [Yy]|[Yy][Ee][Ss])
     echo "Going with the full install..."
+    sudo pacman -S --noconfirm --needed dialog
     words=$(cat package.list)
     tempfile=$(mktemp)
     dialog --checklist "Choose one or more words:" 20 60 10 \
