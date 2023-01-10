@@ -40,7 +40,7 @@ case $answer in
     words=$(cat package.list)
     tempfile=$(mktemp)
     dialog --checklist "Choose one or more words:" 20 60 10 \
-      $(for word in $words; do echo "$word" "$word" OFF; done) 2>$tempfile
+      $(for word in $words; do echo "$word" "$word" ON; done) 2>$tempfile
     choices=$(cat $tempfile)
     for choice in $choices
     do
