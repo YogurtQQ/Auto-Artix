@@ -15,8 +15,15 @@ cat mirrorlist.conf >> /etc/pacman.conf
 pacman-key --populate archlinux
 yes "" | pacman -Syu
 
+# installing dialog (required for this)
 sudo pacman -S --noconfirm --needed dialog
 
+# installing yay (who doesn't want it?)
+sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git
+cd yay
+yes "" | sudo -u $SUDO_USER makepkg -si
+
+# extra software (if you chose no, only git and base-devel gets installed)
 if dialog --stdout --title "Extra software" \
           --backtitle "Auto-Artix" \
           --yesno "Do you want an extra software list or not?" 7 60; then
