@@ -1,18 +1,11 @@
 # (my cinnamon key shortcuts)
-echo -n "Do you want to import Cinnamon DE shortcuts? (yes/no) "
-read answer
-case $answer in
-  [Yy]|[Yy][Ee][Ss])
-    echo "Importing..."
+if dialog --stdout --title "What to do?" \
+          --backtitle "Backup-Verwaltung" \
+          --yesno "Yes: Delete, No:  Restore" 7 60; then
     dconf load /org/cinnamon/desktop/keybindings/ < dconf-settings.conf
-    ;;
-  [Nn]|[Nn][Oo])
+else
     echo "No shortcuts were imported."
-    ;;
-  *)
-    echo "Invalid input. Please enter 'yes' or 'no'."
-    ;;
-esac
+fi
 
 # checking for sudo/doas (literally every command needs it)
 if [ "$(id -u)" -ne 0 ]; then
@@ -26,15 +19,14 @@ cat universe.conf >> /etc/pacman.conf
 pacman -Sy
 pacman-key --init
 pacman-key --refresh
-yes | pacman -Sy artix-archlinux-support
+yes "" | pacman -Sy artix-archlinux-support
 cat mirrorlist.conf >> /etc/pacman.conf
 pacman-key --populate archlinux
-yes | pacman -Syu
+yes "" | pacman -Syu
 
-echo -n "Do you want an extra software list or not? (yes/no) "
-read answer
-case $answer in
-  [Yy]|[Yy][Ee][Ss])
+if dialog --stdout --title "Do you want an extra software list or not?" \
+          --backtitle "Backup-Verwaltung" \
+          --yesno "Yes, No" 7 60; then
     echo "Going with the full install..."
     sudo pacman -S --noconfirm --needed dialog
     words=$(cat package.list)
@@ -51,13 +43,9 @@ case $answer in
     done
     rm $tempfile
     pacman -S --noconfirm --needed git base-devel $choices
-    ;;
-  [Nn]|[Nn][Oo])
+else
     pacman -S --noconfirm --needed git base-devel
-    ;;
-  *)
-    echo "Invalid input. Please enter 'yes' or 'no'."
-    ;;
-esac
+fi
+
 
 
