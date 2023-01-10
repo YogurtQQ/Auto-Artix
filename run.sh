@@ -18,11 +18,6 @@ yes "" | pacman -Syu
 # installing dialog (required for this)
 sudo pacman -S --noconfirm --needed dialog
 
-# installing yay (who doesn't want it?)
-sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git
-cd yay
-yes "" | sudo -u $SUDO_USER makepkg -si
-
 # extra software (if you chose no, only git and base-devel gets installed)
 if dialog --stdout --title "Extra software" \
           --backtitle "Auto-Artix" \
@@ -41,7 +36,12 @@ if dialog --stdout --title "Extra software" \
       fi
     done
     rm $tempfile
+    
     pacman -S --noconfirm --needed git base-devel $choices
+    # installing yay
+    sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git
+    cd yay
+    yes "" | sudo -u $SUDO_USER makepkg -si
 else
     pacman -S --noconfirm --needed git base-devel
 fi
