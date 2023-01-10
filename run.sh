@@ -1,14 +1,3 @@
-sudo pacman -S --noconfirm --needed dialog
-
-# (my cinnamon key shortcuts)
-if dialog --stdout --title "What to do?" \
-          --backtitle "Backup-Verwaltung" \
-          --yesno "Yes: Delete, No:  Restore" 7 60; then
-    dconf load /org/cinnamon/desktop/keybindings/ < dconf-settings.conf
-else
-    echo "No shortcuts were imported."
-fi
-
 # checking for sudo/doas (literally every command needs it)
 if [ "$(id -u)" -ne 0 ]; then
   echo "You have to run as root (sudo/doas)."
@@ -26,9 +15,11 @@ cat mirrorlist.conf >> /etc/pacman.conf
 pacman-key --populate archlinux
 yes "" | pacman -Syu
 
-if dialog --stdout --title "Do you want an extra software list or not?" \
-          --backtitle "Backup-Verwaltung" \
-          --yesno "Yes, No" 7 60; then
+sudo pacman -S --noconfirm --needed dialog
+
+if dialog --stdout --title "Extra software" \
+          --backtitle "Auto-Artix" \
+          --yesno "Do you want an extra software list or not?" 7 60; then
     echo "Going with the full install..."
     words=$(cat package.list)
     tempfile=$(mktemp)
@@ -48,5 +39,13 @@ else
     pacman -S --noconfirm --needed git base-devel
 fi
 
+# (my cinnamon key shortcuts)
+if dialog --stdout --title "Cinnamon keybindings?" \
+          --backtitle "Auto-Artix" \
+          --yesno "Do you want to import the Cinnamon keybindings? (This will replace the current settings!)" 7 60; then
+    dconf load /org/cinnamon/desktop/keybindings/ < dconf-settings.conf
+else
+    echo "No shortcuts were imported."
+fi
 
 
