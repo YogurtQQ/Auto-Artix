@@ -9,7 +9,8 @@ This not only contains a script to install necessary things after installing Art
 
 ## Keyboard bindings
 #### Basic
-A-z = flameshot gui (screenshot software)  
+A-z = run 'flameshot gui' (screenshot software)  
+A-d = open application finder
 A-x = open the default file manager  
 A-enter = open terminal  
 A-c = not binded, but may use it for 'command execute' or web browser  
@@ -18,4 +19,21 @@ A-e = not binded, but may use it for logout menu
 A-q = close window  
 A-r = resize window  
 C-A-space = maximize window
+
+## Build
+1. Clone repository.
+
+`git clone https://github.com/YogurtQQ/Auto-Artix`
+
+2. Change directory into directory.
+
+`cd Auto-Artix`
+
+3. Run as root.
+
+`sudo sh run.sh`
+
+### Oneliner
+`cd $(xdg-user-dir DOWNLOAD);git clone https://github.com/YogurtQQ/Auto-Artix;cd Auto-Artix;sudo sh run.sh`
+
 
