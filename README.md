@@ -1,5 +1,5 @@
 # Auto-Artix
-(personal) Post-install necessary stuff for Artix Linux
+(personal) Post-install configurations for Artix Linux
 
 ## Personal
 This not only contains a script to install necessary things after installing Artix Linux, but also this:
@@ -19,6 +19,17 @@ A-e = not binded, but may use it for logout menu
 A-q = close window  
 A-r = resize window  
 C-A-space = maximize window
+##### Workspaces
+A-1 = Go to workspace 1  
+A-2 = Go to workspace 2  
+A-3 = Go to workspace 3  
+A-4 = Go to workspace 4  
+A-shift-1 = Move to workspace 1  
+A-shift-2 = Move to workspace 2  
+A-shift-3 = Move to workspace 3  
+A-shift-4 = Move to workspace 4  
+
+
 
 ## Build
 1. Clone repository.
