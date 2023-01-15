@@ -34,7 +34,7 @@ A-shift-4 = Move to workspace 4
 ## Build
 1. Clone repository.
 
-`git clone https://github.com/YogurtQQ/Auto-Artix`
+`git clone https://github.com/dark7void/Auto-Artix`
 
 2. Change directory into directory.
 
@@ -45,6 +45,6 @@ A-shift-4 = Move to workspace 4
 `sudo sh run.sh`
 
 ### Oneliner
-`cd $(xdg-user-dir DOWNLOAD);git clone https://github.com/YogurtQQ/Auto-Artix;cd Auto-Artix;sudo sh run.sh`
+`cd $(xdg-user-dir DOWNLOAD);git clone https://github.com/dark7void/Auto-Artix;cd Auto-Artix;sudo sh run.sh`
 
 
