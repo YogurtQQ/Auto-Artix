@@ -6,7 +6,7 @@ fi
 
 # base install
 pacman -Sy
-if ! grep -q "[universe]" /etc/pacman.conf; then
+if ! grep -q "\[universe]" /etc/pacman.conf; then
   cat universe.conf >> /etc/pacman.conf
 else
   echo "Error: universe repos already added..."
@@ -15,7 +15,7 @@ pacman -Sy
 pacman-key --init
 pacman-key --refresh
 yes "" | pacman -Sy artix-archlinux-support
-if ! grep -q "[extra]" /etc/pacman.conf; then
+if ! grep -q "\[extra]" /etc/pacman.conf; then
   cat mirrorlist.conf >> /etc/pacman.conf
 else
   echo "Error: extra/community repos already added..."
