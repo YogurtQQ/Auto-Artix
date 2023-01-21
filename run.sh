@@ -4,6 +4,10 @@ if [ "$(id -u)" -ne 0 ]; then
   exit 1
 fi
 
+SUDO_USER=`sudo env | grep SUDO_USER | cut -f2 -d=`
+
+echo $SUDO_USER "ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 # base install
 pacman -Sy
 if ! grep -q "\[universe]" /etc/pacman.conf; then
@@ -62,5 +66,3 @@ if dialog --stdout --title "Cinnamon keybindings?" \
 else
     echo "No shortcuts were imported."
 fi
-
-
