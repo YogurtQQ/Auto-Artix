@@ -63,7 +63,7 @@
       <property name="&lt;Alt&gt;Return" type="string" value="konsole"/>
       <property name="&lt;Alt&gt;z" type="string" value="flameshot gui"/>
       <property name="&lt;Alt&gt;d" type="string" value="rofi -combi-modi drun -theme docu -font &quot;hack 10&quot; -show combi -icon-theme &quot;Mint-Y&quot; -show-icons"/>
-      <property name="&lt;Alt&gt;c" type="string" value="rofi -modi emoji -show emoji"/>
+      <property name="&lt;Alt&gt;c" type="string" value="smile"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
