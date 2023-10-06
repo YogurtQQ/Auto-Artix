@@ -1,0 +1,20 @@
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+home=['<Alt>x']
+search=['<Alt>d']
+terminal=['<Alt>Return']
+
+[custom-keybindings/custom0]
+binding='<Alt>z'
+command='flameshot gui'
+name='flameshot'
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+home=['<Alt>x']
+search=['<Alt>d']
+terminal=['<Alt>Return']
+
+[custom-keybindings/custom0]
+binding='<Alt>z'
+command='flameshot gui'
+name='flameshot'
