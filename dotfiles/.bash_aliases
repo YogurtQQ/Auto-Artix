@@ -1,3 +1,10 @@
+function copy() {
+  echo "$1" | xclip -sel clipboard
+}
+
+alias t='temp_dir=$(tr -dc "a-z" </dev/urandom | head -c 10); mkdir -p "/tmp/$temp_dir" && cd "/tmp/$temp_dir"'
+alias sec='pwgen -syn1 31 | xclip -selection clipboard'
+
 alias bs='echo \\ Ctrl+U 005C; echo -n "\\" | xclip -selection clipboard'
 alias cat='pygmentize -g -O style=colorful,linenos=1'
 
@@ -16,6 +23,3 @@ alias python='/usr/bin/python3'
 alias p='/usr/bin/python3'
 alias lua='lua5.4'
 alias l='lua5.4'
-
-alias t='temp_dir=$(tr -dc "a-z" </dev/urandom | head -c 10); mkdir -p "/tmp/$temp_dir" && cd "/tmp/$temp_dir"'
-alias sec='pwgen -y1 31 | xclip -selection clipboard'
