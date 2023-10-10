@@ -6,11 +6,23 @@ function mkdircd() {
 	mkdir "$1" && cd "$1"
 }
 
-alias t='temp_dir=$(tr -dc "a-z" </dev/urandom | head -c 10); mkdir -p "/tmp/t/$temp_dir" && cd "/tmp/t/$temp_dir"'
+t() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: t <directory_name>"
+    return 1
+  else
+    random_chars=$(tr -dc "a-z" </dev/urandom | head -c 10)
+    temp_dir="/tmp/t/$1$random_chars"
+    mkdir -p "$temp_dir" && cd "$temp_dir"
+  fi
+}
+
+alias t2='random_chars=$(tr -dc "a-z" </dev/urandom | head -c 10); mkdir -p "/tmp/t/$1$random_chars" && cd "/tmp/t/$1$random_chars"'
+
 alias sec='pwgen -syn1 31 | xclip -selection clipboard'
 
 alias bs='echo \\ Ctrl+U 005C; echo -n "\\" | xclip -selection clipboard'
-alias cat='pygmentize -g -O style=colorful,linenos=1'
+alias fcat='pygmentize -g -O style=colorful,linenos=1'
 
 alias python='/usr/bin/python3'
 alias p='/usr/bin/python3'
@@ -29,7 +41,9 @@ alias m='micro'
 alias c='clear'
 
 function new() {
-  t && go mod init example && \cat <<EOL > main.go
+  if t; then
+    go mod init example
+    cat <<EOL > main.go
 package main
 
 import (
@@ -40,10 +54,12 @@ func main() {
     fmt.Println("Hello, world!")
 }
 EOL
-  echo "Created 'main.go' with sample Go code."
-  \cat <<EOL > a.py
+    echo "Created 'main.go' with sample Go code."
+
+    cat <<EOL > a.py
 import math
 print("Hello, world!")
 EOL
-  echo "Created 'a.py' with sample Python code."
+    echo "Created 'a.py' with sample Python code."
+  fi
 }
