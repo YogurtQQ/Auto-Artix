@@ -6,13 +6,17 @@ function mkdircd() {
 	mkdir "$1" && cd "$1"
 }
 
+function next() {
+	grep -A 1 $1 $2 | grep -v $1 | sed '/^--$/d'
+}
+
 t() {
   if [ $# -lt 1 ]; then
     echo "Usage: t <directory_name>"
     return 1
   else
     random_chars=$(tr -dc "a-z" </dev/urandom | head -c 10)
-    temp_dir="/tmp/t/$1$random_chars"
+    temp_dir="/tmp/t/$1_$random_chars"
     mkdir -p "$temp_dir" && cd "$temp_dir"
   fi
 }
@@ -41,7 +45,7 @@ alias m='micro'
 alias c='clear'
 
 function new() {
-  if t; then
+  if t $1; then
     go mod init example
     cat <<EOL > main.go
 package main
